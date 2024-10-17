@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loginSignupApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Login Signup App</title>
+</head>
+<body ng-controller="MainController">
+    <div class="container">
+        <div ng-if="!isLoggedIn">
+            <h1 ng-if="isLogin">Login</h1>
+            <h1 ng-if="!isLogin">Signup</h1>
+
+            <form ng-submit="submitForm()">
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" ng-model="user.email" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" ng-model="user.password" required>
+                </div>
+                
+                <!-- Additional Details for Signup -->
+                <div ng-if="!isLogin">
+                    <h3>Fill Additional Details</h3>
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" ng-model="user.name" required>
+                    </div>
+                    <div>
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" ng-model="user.age" required>
+                    </div>
+                    <div>
+                        <label for="gender">Gender:</label>
+                        <select id="gender" ng-model="user.gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" ng-model="user.phone" required>
+                    </div>
+                    <div>
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" ng-model="user.address" required>
+                    </div>
+                    <div>
+                        <label for="jobTitle">Job Title:</label>
+                        <input type="text" id="jobTitle" ng-model="user.jobTitle" required>
+                    </div>
+                    <div>
+                        <label for="company">Company:</label>
+                        <input type="text" id="company" ng-model="user.company" required>
+                    </div>
+                    <div>
+                        <label for="experience">Experience (Years):</label>
+                        <input type="number" id="experience" ng-model="user.experience" required>
+                    </div>
+                    <div>
+                        <label for="skills">Skills:</label>
+                        <input type="text" id="skills" ng-model="user.skills" required>
+                    </div>
+                </div>
+
+                <button type="submit" ng-bind="getButtonText()"></button>
+                <p ng-if="isLogin">Don't have an account? <a href="" ng-click="toggleLogin()">Signup here</a></p>
+                <p ng-if="!isLogin">Already have an account? <a href="" ng-click="toggleLogin()">Login here</a></p>
+            </form>
+        </div>
+
+        <div ng-if="isLoggedIn">
+            <h2>Welcome, {{ loggedInUser.name }}</h2>
+            <h3>Your Details:</h3>
+            <ul>
+                <li>Email: {{ loggedInUser.email }}</li>
+                <li>Age: {{ loggedInUser.age }}</li>
+                <li>Gender: {{ loggedInUser.gender }}</li>
+                <li>Phone: {{ loggedInUser.phone }}</li>
+                <li>Address: {{ loggedInUser.address }}</li>
+                <li>Job Title: {{ loggedInUser.jobTitle }}</li>
+                <li>Company: {{ loggedInUser.company }}</li>
+                <li>Experience: {{ loggedInUser.experience }} years</li>
+                <li>Skills: {{ loggedInUser.skills }}</li>
+            </ul>
+            <button ng-click="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
