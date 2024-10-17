@@ -1,0 +1,7 @@
+/login-signup-app
+|-- app.py
+|-- static
+|   |-- style.css
+|   |-- script.js
+|-- templates
+|   |-- index.html  # (This is the correct location)
