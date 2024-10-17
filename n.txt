@@ -5,3 +5,17 @@
 |   |-- script.js
 |-- templates
 |   |-- index.html  # (This is the correct location)
+
+
+5. Running Your Application
+Ensure you have Flask installed:
+
+bash
+Copy code
+pip install flask
+Run your Flask application:
+
+bash
+Copy code
+python app.py
+Open your browser and navigate to http://127.0.0.1:5000/.
